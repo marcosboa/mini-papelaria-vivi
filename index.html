@@ -3,134 +3,356 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Papelaria Vivi</title>
+  <title>Mini Papelaria Vivi | Papelaria, Impressões e Acessórios</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: #fff8fb; color: #2d2335; }
-    header { background: linear-gradient(135deg, #ff4fa3, #8b5cf6, #22c1c3); color: white; padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 8px 24px rgba(0,0,0,.16); }
-    .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.35rem; }
-    .logo-icon { width: 52px; height: 52px; border-radius: 18px; background: white; color: #ff4fa3; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
-    nav a { color: white; text-decoration: none; margin-left: 22px; font-weight: 700; }
-    .notice { background: #ffe45e; color: #4c2a00; text-align: center; padding: 10px; font-weight: 900; }
-    .hero { min-height: 82vh; padding: 70px 8%; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; background: radial-gradient(circle at top left, #ffe1f0, transparent 35%), radial-gradient(circle at bottom right, #dff9ff, transparent 35%); }
-    .badge { display: inline-block; background: white; color: #8b5cf6; padding: 10px 16px; border-radius: 999px; font-weight: 900; margin-bottom: 18px; box-shadow: 0 8px 20px rgba(139,92,246,.16); }
-    .hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: 1; margin-bottom: 20px; color: #251136; }
-    .hero h1 span { color: #ff4fa3; }
-    .hero p { font-size: 1.18rem; line-height: 1.7; margin-bottom: 28px; color: #594866; }
-    .buttons { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn { display: inline-block; padding: 15px 22px; border-radius: 999px; text-decoration: none; font-weight: 900; transition: .2s; }
-    .btn-primary { background: #ff4fa3; color: white; box-shadow: 0 10px 24px rgba(255,79,163,.28); }
-    .btn-secondary { background: white; color: #8b5cf6; border: 2px solid #ede7ff; }
-    .hero-card { background: white; border-radius: 34px; padding: 34px; box-shadow: 0 24px 70px rgba(139,92,246,.18); border: 1px solid #f2eaff; }
-    .hero-card h2 { font-size: 2rem; margin-bottom: 18px; color: #8b5cf6; }
-    .hero-card ul { list-style: none; display: grid; gap: 14px; }
-    .hero-card li { background: #fff4fa; padding: 14px 16px; border-radius: 18px; font-weight: 800; }
-    section { padding: 72px 8%; }
-    .section-title { text-align: center; margin-bottom: 38px; }
-    .section-title h2 { font-size: 2.5rem; color: #251136; }
-    .section-title p { color: #6b5878; margin-top: 10px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
-    .card { background: white; border-radius: 26px; padding: 26px; box-shadow: 0 16px 40px rgba(0,0,0,.08); border: 1px solid #f4edf8; transition: .25s; }
-    .card:hover { transform: translateY(-6px); }
-    .card .icon { font-size: 2.4rem; margin-bottom: 14px; }
-    .card h3 { color: #8b5cf6; margin-bottom: 10px; }
-    .card p { color: #665372; line-height: 1.5; }
-    .services { background: linear-gradient(135deg, #8b5cf6, #ff4fa3); color: white; }
-    .services .section-title h2, .services .section-title p { color: white; }
-    .services .card { background: rgba(255,255,255,.14); color: white; border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(8px); }
-    .services .card h3, .services .card p { color: white; }
-    .contact { background: #fff0f7; }
-    .contact-box { max-width: 900px; margin: auto; background: white; padding: 34px; border-radius: 30px; box-shadow: 0 18px 50px rgba(0,0,0,.1); text-align: center; }
-    .contact-box h2 { color: #ff4fa3; margin-bottom: 14px; font-size: 2rem; }
-    .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 26px 0; }
-    .info { background: #f8f2ff; border-radius: 20px; padding: 18px; font-weight: 800; }
-    footer { background: #241331; color: white; text-align: center; padding: 28px 8%; }
-    .whatsapp { position: fixed; right: 22px; bottom: 22px; width: 62px; height: 62px; background: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; text-decoration: none; box-shadow: 0 12px 30px rgba(0,0,0,.25); z-index: 20; }
-    @media (max-width: 800px) { header { flex-direction: column; gap: 14px; } nav a { margin: 0 8px; } .hero { grid-template-columns: 1fr; padding-top: 46px; } }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fff7fb;
+      color: #2d2340;
+    }
+    header {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.85), transparent 35%),
+        linear-gradient(135deg, #ff5cab, #7c4dff 55%, #00c2ff);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+    .blob {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      filter: blur(2px);
+    }
+    .blob.one { top: 90px; right: -90px; }
+    .blob.two { bottom: -120px; left: -80px; }
+    nav {
+      width: min(1120px, 92%);
+      margin: auto;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: .3px;
+    }
+    .logo-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: white;
+      color: #ff4da6;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 18px 45px rgba(0,0,0,.18);
+      font-size: 1.8rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      margin-left: 22px;
+      opacity: .95;
+    }
+    .hero {
+      width: min(1120px, 92%);
+      margin: auto;
+      min-height: calc(100vh - 102px);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 50px;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(255,255,255,.22);
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: .95;
+      margin-bottom: 22px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      max-width: 640px;
+      opacity: .96;
+    }
+    .buttons { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 15px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: .25s;
+    }
+    .btn-primary { background: white; color: #7c4dff; box-shadow: 0 18px 45px rgba(0,0,0,.18); }
+    .btn-secondary { border: 2px solid white; color: white; }
+    .btn:hover { transform: translateY(-4px); }
+    .hero-card {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.22);
+      backdrop-filter: blur(16px);
+    }
+    .mockup {
+      background: white;
+      color: #2d2340;
+      border-radius: 26px;
+      padding: 24px;
+    }
+    .mockup h3 { color: #ff4da6; font-size: 1.5rem; margin-bottom: 14px; }
+    .mockup-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .mini-card {
+      background: #fff1f7;
+      padding: 18px;
+      border-radius: 18px;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(255,92,171,.14);
+    }
+    .mini-card span { display: block; font-size: 2rem; margin-bottom: 8px; }
+    section { padding: 82px 0; }
+    .container { width: min(1120px, 92%); margin: auto; }
+    .section-title { text-align: center; margin-bottom: 46px; }
+    .section-title span { color: #ff4da6; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+    .section-title h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-top: 10px; }
+    .features, .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .card {
+      background: white;
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 18px 50px rgba(78, 47, 120, .11);
+      border: 1px solid #ffe1ef;
+      transition: .25s;
+    }
+    .card:hover { transform: translateY(-7px); }
+    .card .icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .card h3 { color: #7c4dff; margin-bottom: 10px; }
+    .card p { line-height: 1.6; color: #615673; }
+    .showcase { background: linear-gradient(180deg, #fff7fb, #f1f8ff); }
+    .product-card { padding: 0; overflow: hidden; }
+    .product-img {
+      height: 170px;
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #ffe0f1, #e7e0ff, #dff7ff);
+    }
+    .product-info { padding: 22px; }
+    .badge {
+      display: inline-block;
+      background: #fff1f7;
+      color: #ff4da6;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .8rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .services-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      background: linear-gradient(135deg, #7c4dff, #ff4da6);
+      border-radius: 34px;
+      padding: 46px;
+      color: white;
+      box-shadow: 0 25px 70px rgba(124,77,255,.25);
+    }
+    .services-box h2 { font-size: 2.6rem; margin-bottom: 18px; }
+    .services-box p { line-height: 1.7; font-size: 1.08rem; }
+    .service-list { display: grid; gap: 12px; }
+    .service-list div {
+      background: rgba(255,255,255,.18);
+      padding: 16px;
+      border-radius: 18px;
+      font-weight: 800;
+    }
+    .contact {
+      background: #2d2340;
+      color: white;
+      padding-bottom: 110px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .contact-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      padding: 26px;
+    }
+    .contact-card h3 { color: #ffb6dd; margin-bottom: 10px; }
+    footer {
+      background: #20172f;
+      color: #d7d0e5;
+      text-align: center;
+      padding: 26px;
+    }
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background: #25d366;
+      color: white;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      text-decoration: none;
+      box-shadow: 0 15px 35px rgba(0,0,0,.25);
+      z-index: 10;
+    }
+    @media (max-width: 900px) {
+      nav { flex-direction: column; gap: 18px; }
+      nav a { margin: 0 8px; font-size: .9rem; }
+      .hero, .services-box { grid-template-columns: 1fr; }
+      .features, .products, .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .features, .products, .contact-grid { grid-template-columns: 1fr; }
+      .services-box { padding: 28px; }
+      .mockup-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <div class="notice">✨ V2 NO AR — teste de atualização do site da Mini Papelaria Vivi ✨</div>
-
-  <header>
-    <div class="logo"><div class="logo-icon">✏️</div><div>Mini Papelaria Vivi</div></div>
+  <header id="home">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
+      <div class="logo"><div class="logo-icon">V</div><div>Mini Papelaria Vivi</div></div>
       <div>
-        <div class="badge">Papelaria • Impressões • Acessórios</div>
-        <h1>Pequena no nome, <span>gigante no carinho.</span></h1>
-        <p>Na Mini Papelaria Vivi você encontra material escolar, cadernos, capinhas, acessórios para celular e serviços de impressão, xerox e fotos com atendimento simples, rápido e cheio de cuidado.</p>
+        <a href="#home">Home</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <div>
+        <span class="tag">✨ Papelaria • Impressões • Acessórios</span>
+        <h1>Pequena no nome, gigante no carinho.</h1>
+        <p>Na Mini Papelaria Vivi você encontra material escolar, cadernos, capinhas, acessórios para celular, impressões, xerox e fotos impressas com atendimento rápido e caprichado.</p>
         <div class="buttons">
           <a class="btn btn-primary" href="#produtos">Ver produtos</a>
           <a class="btn btn-secondary" href="#contato">Falar no WhatsApp</a>
         </div>
       </div>
       <div class="hero-card">
-        <h2>O que você encontra aqui?</h2>
-        <ul>
-          <li>📚 Cadernos e materiais escolares</li>
-          <li>📱 Capinhas e acessórios para celular</li>
-          <li>🖨️ Impressão, xerox e documentos</li>
-          <li>🖼️ Impressão de fotos</li>
-          <li>💅 Itens de beleza e utilidades</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="produtos">
-      <div class="section-title">
-        <h2>Vitrine de produtos</h2>
-        <p>Alguns produtos e categorias disponíveis na loja.</p>
-      </div>
-      <div class="grid">
-        <div class="card"><div class="icon">📒</div><h3>Cadernos</h3><p>Cadernos para escola, trabalho, estudos e anotações do dia a dia.</p></div>
-        <div class="card"><div class="icon">✂️</div><h3>Material escolar</h3><p>Lápis, canetas, borrachas, apontadores, cartolinas e muito mais.</p></div>
-        <div class="card"><div class="icon">📱</div><h3>Capinhas</h3><p>Capinhas para celular com variedade, proteção e estilo.</p></div>
-        <div class="card"><div class="icon">🔌</div><h3>Acessórios</h3><p>Cabos, carregadores e acessórios úteis para o seu dia a dia.</p></div>
-        <div class="card"><div class="icon">💅</div><h3>Beleza</h3><p>Lixas, acetona, esmaltes, agulhas e pequenos itens de cuidado pessoal.</p></div>
-        <div class="card"><div class="icon">🎁</div><h3>Utilidades</h3><p>Produtos práticos para facilitar sua rotina com preço acessível.</p></div>
-      </div>
-    </section>
-
-    <section class="services" id="servicos">
-      <div class="section-title">
-        <h2>Serviços</h2>
-        <p>Atendimento rápido para documentos, trabalhos e fotos.</p>
-      </div>
-      <div class="grid">
-        <div class="card"><div class="icon">🖨️</div><h3>Impressão</h3><p>Impressão preto e branco ou colorida para documentos, trabalhos e arquivos.</p></div>
-        <div class="card"><div class="icon">📄</div><h3>Xerox</h3><p>Cópias simples e rápidas para documentos do dia a dia.</p></div>
-        <div class="card"><div class="icon">📸</div><h3>Fotos</h3><p>Impressão de fotos para lembranças, documentos e momentos especiais.</p></div>
-      </div>
-    </section>
-
-    <section class="contact" id="contato">
-      <div class="contact-box">
-        <h2>Fale com a Mini Papelaria Vivi</h2>
-        <p>Chame no WhatsApp, siga no Instagram ou venha nos visitar.</p>
-        <div class="contact-info">
-          <div class="info">📞 WhatsApp<br>11 98262-1469</div>
-          <div class="info">📍 Endereço<br>Rua Acédio José Fontanete, 53</div>
-          <div class="info">📷 Instagram<br>@minipapelariavivi</div>
+        <div class="mockup">
+          <h3>O que você encontra aqui?</h3>
+          <div class="mockup-grid">
+            <div class="mini-card"><span>📚</span>Cadernos</div>
+            <div class="mini-card"><span>📱</span>Capinhas</div>
+            <div class="mini-card"><span>🖨️</span>Impressões</div>
+            <div class="mini-card"><span>📸</span>Fotos</div>
+          </div>
         </div>
-        <a class="btn btn-primary" href="https://wa.me/5511982621469" target="_blank">Enviar mensagem</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </header>
 
-  <a class="whatsapp" href="https://wa.me/5511982621469" target="_blank" aria-label="WhatsApp">💬</a>
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <span>Por que escolher a Vivi?</span>
+        <h2>Atendimento de bairro com visual de loja moderna</h2>
+      </div>
+      <div class="features">
+        <div class="card"><div class="icon">⚡</div><h3>Rapidez</h3><p>Serviços práticos para o dia a dia: imprimir, copiar, comprar e resolver.</p></div>
+        <div class="card"><div class="icon">💖</div><h3>Carinho</h3><p>Cada cliente é atendido com atenção, cuidado e aquele capricho especial.</p></div>
+        <div class="card"><div class="icon">🎒</div><h3>Variedade</h3><p>Produtos escolares, papelaria, acessórios e itens úteis em um só lugar.</p></div>
+        <div class="card"><div class="icon">📍</div><h3>Perto de você</h3><p>Uma loja local para facilitar sua rotina, sem complicação.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="produtos" class="showcase">
+    <div class="container">
+      <div class="section-title">
+        <span>Vitrine</span>
+        <h2>Produtos e categorias</h2>
+      </div>
+      <div class="products">
+        <div class="card product-card"><div class="product-img">📓</div><div class="product-info"><span class="badge">Escolar</span><h3>Cadernos</h3><p>Cadernos para escola, estudos, anotações e organização.</p></div></div>
+        <div class="card product-card"><div class="product-img">✏️</div><div class="product-info"><span class="badge">Papelaria</span><h3>Material escolar</h3><p>Lápis, borracha, canetas, folhas, cartolina e muito mais.</p></div></div>
+        <div class="card product-card"><div class="product-img">📱</div><div class="product-info"><span class="badge">Celular</span><h3>Capinhas</h3><p>Capinhas e acessórios para deixar seu celular protegido e bonito.</p></div></div>
+        <div class="card product-card"><div class="product-img">🔌</div><div class="product-info"><span class="badge">Acessórios</span><h3>Itens para celular</h3><p>Cabos, carregadores, películas e acessórios úteis para o dia a dia.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="container">
+      <div class="services-box">
+        <div>
+          <h2>Serviços rápidos para facilitar sua vida</h2>
+          <p>Precisa imprimir um documento, tirar xerox, imprimir uma foto ou resolver algo de última hora? A Mini Papelaria Vivi está pronta para ajudar com praticidade e bom atendimento.</p>
+        </div>
+        <div class="service-list">
+          <div>🖨️ Impressão preto e branco e colorida</div>
+          <div>📄 Xerox de documentos</div>
+          <div>📸 Impressão de fotos</div>
+          <div>🛍️ Produtos escolares e utilidades</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <span>Contato</span>
+        <h2>Fale com a Mini Papelaria Vivi</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card"><h3>WhatsApp</h3><p>Atendimento rápido para dúvidas, pedidos e orçamentos.</p><br><p><strong>11 98262-1469</strong></p></div>
+        <div class="contact-card"><h3>Endereço</h3><p>Rua Acédio José Fontanete, 53</p><br><p>Venha conhecer nossa loja.</p></div>
+        <div class="contact-card"><h3>Instagram</h3><p>Acompanhe novidades, produtos e serviços.</p><br><p><strong>@minipapelariavivi</strong></p></div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2026 Mini Papelaria Vivi — feito com carinho para atender melhor você.</p>
+    <p>© 2026 Mini Papelaria Vivi — Feito com carinho para encantar clientes.</p>
   </footer>
+
+  <a class="whatsapp" href="https://wa.me/5511982621469" target="_blank" aria-label="WhatsApp">💬</a>
 </body>
 </html>
