@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Papelaria Vivi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #fff8fb;
+      color: #30233a;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff4fa3, #8b5cf6, #22c1c3);
+      color: white;
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: .5px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: white;
+      color: #ff4fa3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 22px;
+      font-weight: 700;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      opacity: .75;
+    }
+
+    .hero {
+      min-height: 82vh;
+      padding: 80px 8%;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: center;
+      background: radial-gradient(circle at top left, #ffe1f0, transparent 35%), radial-gradient(circle at bottom right, #dff9ff, transparent 35%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1;
+      margin-bottom: 22px;
+      color: #271334;
+    }
+
+    .hero h1 span {
+      color: #ff4fa3;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #594866;
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff4fa3, #8b5cf6);
+      color: white;
+      box-shadow: 0 12px 24px rgba(255,79,163,.28);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #8b5cf6;
+      border: 2px solid #eadcff;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 36px;
+      padding: 34px;
+      box-shadow: 0 24px 60px rgba(89,72,102,.16);
+      text-align: center;
+      border: 1px solid #f5d9eb;
+    }
+
+    .hero-card .big-icon {
+      font-size: 6rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ff4fa3;
+    }
+
+    section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #271334;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #725f7f;
+      font-size: 1.1rem;
+    }
+
+    .features, .products, .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+    }
+
+    .feature, .product, .contact-card {
+      background: white;
+      padding: 28px;
+      border-radius: 28px;
+      box-shadow: 0 14px 34px rgba(89,72,102,.10);
+      border: 1px solid #f5e6f0;
+      transition: .3s;
+    }
+
+    .feature:hover, .product:hover, .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 42px rgba(89,72,102,.16);
+    }
+
+    .feature .icon, .product .icon, .contact-card .icon {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+
+    .feature h3, .product h3, .contact-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      color: #8b5cf6;
+    }
+
+    .feature p, .product p, .contact-card p {
+      color: #675575;
+      line-height: 1.6;
+    }
+
+    .products-section {
+      background: linear-gradient(180deg, #fff8fb, #f2fbff);
+    }
+
+    .product {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tag {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #fff0a8;
+      color: #5c4500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .about-box {
+      background: linear-gradient(135deg, #271334, #6d28d9);
+      color: white;
+      border-radius: 36px;
+      padding: 45px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      box-shadow: 0 24px 60px rgba(39,19,52,.22);
+    }
+
+    .about-box h2 {
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+    }
+
+    .about-box p {
+      line-height: 1.8;
+      color: #f5eaff;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 22px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-section {
+      background: #fff;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, #ff4fa3, #22c1c3);
+      color: white;
+      text-align: center;
+      border-radius: 36px;
+      padding: 45px 25px;
+      margin-top: 45px;
+    }
+
+    .footer-cta h2 {
+      font-size: 2.3rem;
+      margin-bottom: 14px;
+    }
+
+    footer {
+      background: #271334;
+      color: white;
+      text-align: center;
+      padding: 26px 8%;
+    }
+
+    @media (max-width: 840px) {
+      header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero, .about-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">✏️</div>
+      <div>Mini Papelaria Vivi</div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <h1>Pequena no nome, <span>gigante</span> no carinho.</h1>
+        <p>
+          Na Mini Papelaria Vivi você encontra materiais escolares, acessórios para celular,
+          capinhas, serviços de impressão, xerox e impressão de fotos com atendimento rápido,
+          caprichado e cheio de cuidado.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#produtos">Ver vitrine</a>
+          <a class="btn btn-secondary" href="#contato">Falar no WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="big-icon">🌈</div>
+        <h2>Tudo em um só lugar</h2>
+        <p>Material escolar, impressão, xerox, fotos e acessórios para o seu dia a dia.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>O que você encontra aqui</h2>
+        <p>Produtos e serviços para escola, trabalho, casa e celular.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">📚</div>
+          <h3>Material escolar</h3>
+          <p>Cadernos, folhas, canetas, lápis, borrachas e itens para a rotina escolar.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">📱</div>
+          <h3>Acessórios para celular</h3>
+          <p>Capinhas, películas, cabos, carregadores e acessórios úteis para o dia a dia.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🖨️</div>
+          <h3>Impressão e xerox</h3>
+          <p>Impressões, cópias, documentos, atividades escolares e trabalhos.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">📸</div>
+          <h3>Fotos impressas</h3>
+          <p>Imprimimos suas fotos com carinho para guardar ou presentear.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="produtos">
+      <div class="section-title">
+        <h2>Vitrine de produtos</h2>
+        <p>Uma prévia do que você pode encontrar na Mini Papelaria Vivi.</p>
+      </div>
+
+      <div class="products">
+        <div class="product">
+          <span class="tag">Escolar</span>
+          <div class="icon">📒</div>
+          <h3>Cadernos</h3>
+          <p>Cadernos para escola, faculdade, anotações, desenhos e organização.</p>
+        </div>
+        <div class="product">
+          <span class="tag">Celular</span>
+          <div class="icon">📱</div>
+          <h3>Capinhas</h3>
+          <p>Capinhas para proteger e deixar seu celular com mais estilo.</p>
+        </div>
+        <div class="product">
+          <span class="tag">Serviço</span>
+          <div class="icon">🖨️</div>
+          <h3>Impressões</h3>
+          <p>Impressão de documentos, atividades, boletos, currículos e trabalhos.</p>
+        </div>
+        <div class="product">
+          <span class="tag">Serviço</span>
+          <div class="icon">📄</div>
+          <h3>Xerox</h3>
+          <p>Cópias rápidas para documentos, apostilas, atividades e materiais diversos.</p>
+        </div>
+        <div class="product">
+          <span class="tag">Foto</span>
+          <div class="icon">🖼️</div>
+          <h3>Fotos impressas</h3>
+          <p>Imprima suas lembranças favoritas para guardar, decorar ou presentear.</p>
+        </div>
+        <div class="product">
+          <span class="tag">Acessórios</span>
+          <div class="icon">🔌</div>
+          <h3>Cabos e carregadores</h3>
+          <p>Itens essenciais para manter seus dispositivos sempre prontos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="about-box">
+        <div>
+          <h2>Atendimento simples, rápido e com carinho.</h2>
+          <p>
+            A Mini Papelaria Vivi nasceu para facilitar o dia a dia da comunidade,
+            oferecendo produtos úteis, serviços de impressão e aquele atendimento de bairro
+            que entende o que o cliente precisa.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>📚</strong>Escolar</div>
+          <div class="stat"><strong>📱</strong>Celular</div>
+          <div class="stat"><strong>🖨️</strong>Impressão</div>
+          <div class="stat"><strong>📸</strong>Fotos</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contato">
+      <div class="section-title">
+        <h2>Contato</h2>
+        <p>Fale com a Mini Papelaria Vivi e faça seu orçamento.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">💬</div>
+          <h3>WhatsApp</h3>
+          <p>Coloque aqui o número da papelaria para atendimento rápido.</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">📍</div>
+          <h3>Endereço</h3>
+          <p>Coloque aqui o endereço completo da loja.</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">⏰</div>
+          <h3>Horário</h3>
+          <p>Segunda a sábado, das 10h às 20h. Ajuste conforme sua rotina.</p>
+        </div>
+      </div>
+
+      <div class="footer-cta">
+        <h2>Precisa imprimir, copiar ou comprar material?</h2>
+        <p>Chama a Mini Papelaria Vivi. A gente resolve com carinho!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Mini Papelaria Vivi — Papelaria, presentes, impressões e acessórios.</p>
+  </footer>
+</body>
+</html>
