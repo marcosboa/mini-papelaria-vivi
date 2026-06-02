@@ -3,61 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Papelaria Vivi | Papelaria, Impressões e Acessórios</title>
+  <title>Mini Papelaria Vivi</title>
   <style>
     :root {
-      --pink: #ff4fa3;
-      --soft-pink: #ffe4f1;
+      --pink: #ff5fa2;
+      --pink-soft: #fff0f7;
       --lilac: #8b5cf6;
-      --purple: #6d28d9;
-      --blue: #38bdf8;
-      --yellow: #ffd166;
-      --green: #7bd88f;
-      --dark: #25172f;
-      --muted: #6b6470;
+      --lilac-soft: #f4efff;
+      --blue: #5cc8ff;
+      --yellow: #ffe08a;
+      --text: #2f2a3b;
+      --muted: #6f687c;
       --white: #ffffff;
-      --bg: #fff8fc;
-      --card: rgba(255,255,255,.82);
-      --shadow: 0 20px 50px rgba(130, 57, 130, .18);
+      --shadow: 0 20px 50px rgba(95, 71, 130, 0.14);
       --radius: 28px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      color: var(--dark);
-      background:
-        radial-gradient(circle at 15% 10%, #ffe1f1 0 18%, transparent 36%),
-        radial-gradient(circle at 85% 5%, #e7dcff 0 16%, transparent 34%),
-        radial-gradient(circle at 70% 70%, #dff6ff 0 12%, transparent 32%),
-        linear-gradient(135deg, #fff8fc, #fbf7ff 55%, #f4fbff);
-      min-height: 100vh;
-      overflow-x: hidden;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    a { color: inherit; text-decoration: none; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #ffe1f0 0, transparent 30%),
+        radial-gradient(circle at top right, #e9ddff 0, transparent 30%),
+        linear-gradient(180deg, #fff9fc 0%, #ffffff 45%, #fff8fb 100%);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
 
     .container {
-      width: min(1180px, calc(100% - 36px));
+      width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(255, 248, 252, .78);
-      border-bottom: 1px solid rgba(255, 79, 163, .12);
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.12);
     }
 
     .nav {
-      min-height: 78px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
 
     .brand {
@@ -65,7 +64,7 @@
       align-items: center;
       gap: 12px;
       font-weight: 900;
-      letter-spacing: -.6px;
+      letter-spacing: -0.5px;
     }
 
     .logo {
@@ -75,33 +74,30 @@
       place-items: center;
       border-radius: 18px;
       background: linear-gradient(135deg, var(--pink), var(--lilac));
-      color: #fff;
-      font-size: 25px;
-      box-shadow: 0 14px 32px rgba(255, 79, 163, .32);
-      transform: rotate(-4deg);
+      color: white;
+      font-size: 26px;
+      box-shadow: 0 12px 26px rgba(255, 95, 162, .28);
     }
 
-    .brand span { display:block; font-size: 20px; }
-    .brand small { display:block; color: var(--muted); font-weight: 700; font-size: 12px; margin-top:2px; }
+    .brand span { display: block; font-size: 22px; }
+    .brand small { color: var(--muted); font-size: 12px; font-weight: 700; }
 
     .menu {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      color: #4b3d55;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .menu a {
-      padding: 11px 15px;
+      padding: 10px 14px;
       border-radius: 999px;
-      transition: .25s;
+      font-weight: 700;
+      color: #564d68;
     }
 
-    .menu a:hover {
-      background: var(--soft-pink);
-      color: var(--pink);
-    }
+    .menu a:hover { background: var(--pink-soft); color: var(--pink); }
 
     .btn {
       display: inline-flex;
@@ -111,332 +107,283 @@
       padding: 14px 20px;
       border-radius: 999px;
       font-weight: 900;
-      border: 0;
+      border: none;
       cursor: pointer;
-      transition: .25s;
-      box-shadow: 0 14px 28px rgba(255, 79, 163, .2);
-      white-space: nowrap;
+      transition: .2s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--pink), var(--purple));
-      color: #fff;
+      color: white;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      box-shadow: 0 14px 28px rgba(255, 95, 162, .26);
     }
-
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(109,40,217,.25); }
 
     .btn-light {
-      background: rgba(255,255,255,.78);
-      color: var(--purple);
-      border: 1px solid rgba(139,92,246,.18);
+      color: var(--pink);
+      background: white;
+      box-shadow: var(--shadow);
     }
 
+    .btn:hover { transform: translateY(-2px); }
+
     .hero {
-      padding: 70px 0 44px;
-      position: relative;
+      padding: 74px 0 44px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.04fr .96fr;
-      gap: 42px;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 36px;
       align-items: center;
     }
 
     .badge {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 10px 15px;
-      background: rgba(255, 255, 255, .78);
-      border: 1px solid rgba(255,79,163,.18);
+      width: fit-content;
+      padding: 9px 14px;
       border-radius: 999px;
+      background: white;
+      box-shadow: var(--shadow);
       color: var(--pink);
       font-weight: 900;
-      box-shadow: 0 12px 30px rgba(255,79,163,.10);
       margin-bottom: 20px;
     }
 
     h1 {
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: .94;
-      letter-spacing: -3.5px;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: .98;
+      letter-spacing: -2.2px;
       margin-bottom: 22px;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
+    h1 strong {
+      color: transparent;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent;
     }
 
     .hero p {
-      font-size: 20px;
-      line-height: 1.7;
+      max-width: 610px;
       color: var(--muted);
-      max-width: 650px;
+      font-size: 19px;
       margin-bottom: 28px;
     }
 
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
 
     .hero-card {
-      position: relative;
-      min-height: 520px;
-      border-radius: 42px;
-      padding: 28px;
-      background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(255,228,241,.72));
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      border-radius: 38px;
+      padding: 26px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.9);
+      position: relative;
       overflow: hidden;
     }
 
     .hero-card::before {
       content: "";
       position: absolute;
-      inset: -80px -50px auto auto;
-      width: 260px;
-      height: 260px;
-      background: linear-gradient(135deg, #ff9bcb, #8b5cf6);
+      width: 170px;
+      height: 170px;
+      right: -50px;
+      top: -50px;
+      background: #ffe1f0;
       border-radius: 50%;
-      opacity: .24;
     }
 
-    .big-emoji {
-      position: absolute;
-      inset: 48px 0 auto 0;
-      text-align: center;
-      font-size: 140px;
-      filter: drop-shadow(0 24px 25px rgba(109,40,217,.18));
-      animation: float 4.5s ease-in-out infinite;
+    .emoji-showcase {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
-
-    @keyframes float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
 
     .mini-card {
-      position: absolute;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(255,255,255,.95);
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: 0 20px 40px rgba(96, 54, 123, .14);
-      backdrop-filter: blur(14px);
+      min-height: 150px;
+      border-radius: 26px;
+      padding: 22px;
+      background: linear-gradient(180deg, #ffffff, #fff7fb);
+      border: 1px solid #f4ddea;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
-    .mini-card b { display: block; font-size: 17px; margin-bottom: 4px; }
+    .mini-card .emoji {
+      font-size: 44px;
+      margin-bottom: 8px;
+    }
+
+    .mini-card b { font-size: 17px; }
     .mini-card small { color: var(--muted); font-weight: 700; }
-    .card-1 { left: 22px; bottom: 138px; width: 210px; }
-    .card-2 { right: 22px; bottom: 65px; width: 220px; }
-    .card-3 { left: 88px; top: 308px; width: 245px; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .stat {
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.9);
-      padding: 18px;
-      border-radius: 22px;
-      box-shadow: 0 14px 28px rgba(130,57,130,.10);
-    }
-
-    .stat strong { font-size: 24px; display: block; color: var(--purple); }
-    .stat span { font-size: 13px; color: var(--muted); font-weight: 800; }
-
-    section { padding: 64px 0; }
+    section { padding: 58px 0; }
 
     .section-title {
       text-align: center;
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto 34px;
     }
 
     .section-title h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      letter-spacing: -2px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p { color: var(--muted); line-height: 1.7; font-size: 17px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .product-card, .service-card, .contact-card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.92);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 18px 44px rgba(130,57,130,.12);
-      transition: .25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-card:hover, .service-card:hover, .contact-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 26px 60px rgba(130,57,130,.18);
-    }
-
-    .emoji-box {
-      height: 152px;
-      border-radius: 24px;
-      display: grid;
-      place-items: center;
-      font-size: 68px;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(255,255,255,.85), transparent 28%),
-        linear-gradient(135deg, #ffe1f1, #eee5ff 58%, #dff6ff);
-      margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,.92);
-    }
-
-    .tag {
-      display: inline-flex;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: var(--soft-pink);
-      color: var(--pink);
-      font-size: 12px;
-      font-weight: 900;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -1px;
       margin-bottom: 10px;
     }
 
-    .product-card h3, .service-card h3, .contact-card h3 { font-size: 20px; margin-bottom: 8px; }
-    .product-card p, .service-card p, .contact-card p { color: var(--muted); line-height: 1.65; font-weight: 600; }
+    .section-title p { color: var(--muted); font-size: 18px; }
 
     .services {
-      background: rgba(255,255,255,.46);
-      border-top: 1px solid rgba(255,79,163,.10);
-      border-bottom: 1px solid rgba(139,92,246,.10);
-    }
-
-    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
-    .service-icon {
-      width: 62px;
-      height: 62px;
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(139, 92, 246, 0.10);
+      min-height: 230px;
+    }
+
+    .card-icon {
+      width: 72px;
+      height: 72px;
       display: grid;
       place-items: center;
-      border-radius: 21px;
-      font-size: 31px;
-      background: linear-gradient(135deg, var(--soft-pink), #efe7ff);
-      margin-bottom: 16px;
+      border-radius: 24px;
+      background: var(--pink-soft);
+      font-size: 36px;
+      margin-bottom: 18px;
     }
+
+    .card h3 { font-size: 22px; margin-bottom: 8px; }
+    .card p { color: var(--muted); }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 26px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 95, 162, .12);
+    }
+
+    .product .emoji-box {
+      height: 112px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #fff0f7, #f2ebff);
+      display: grid;
+      place-items: center;
+      font-size: 48px;
+      margin-bottom: 14px;
+    }
+
+    .product h3 { font-size: 18px; margin-bottom: 4px; }
+    .product p { color: var(--muted); font-size: 14px; }
 
     .highlight {
-      margin-top: 48px;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      border-radius: 36px;
+      padding: 38px;
+      color: white;
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 28px;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
       align-items: center;
-      background: linear-gradient(135deg, rgba(255,79,163,.95), rgba(109,40,217,.92));
-      color: #fff;
-      border-radius: 40px;
-      padding: 34px;
-      box-shadow: 0 30px 70px rgba(109,40,217,.22);
-      overflow: hidden;
-      position: relative;
+      box-shadow: 0 24px 50px rgba(139, 92, 246, .24);
     }
 
-    .highlight::after {
-      content: "✨";
-      position: absolute;
-      right: 34px;
-      top: 18px;
-      font-size: 70px;
-      opacity: .25;
-    }
-
-    .highlight-emoji {
-      min-height: 250px;
-      display: grid;
-      place-items: center;
-      font-size: 132px;
-      background: rgba(255,255,255,.14);
-      border-radius: 32px;
-      border: 1px solid rgba(255,255,255,.24);
-    }
-
-    .highlight h2 { font-size: clamp(30px, 4vw, 48px); letter-spacing: -2px; margin-bottom: 12px; }
-    .highlight p { line-height: 1.7; color: rgba(255,255,255,.88); font-size: 18px; margin-bottom: 18px; }
-
-    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
-    .pill {
-      padding: 10px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.20);
-      font-weight: 900;
-    }
+    .highlight h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.08; }
+    .highlight p { opacity: .92; font-size: 18px; margin-top: 8px; }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
+    .contact-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid #f2e8f3;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+    .info-row span { font-size: 26px; }
+    .info-row b { display: block; }
+    .info-row small { color: var(--muted); font-size: 15px; }
+
     footer {
-      padding: 34px 0;
+      padding: 32px 0;
       text-align: center;
       color: var(--muted);
-      font-weight: 800;
-      border-top: 1px solid rgba(255,79,163,.12);
-      background: rgba(255,255,255,.42);
     }
 
     .whatsapp {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 50;
-      background: #25D366;
-      color: #fff;
-      padding: 15px 18px;
-      border-radius: 999px;
-      font-weight: 950;
-      box-shadow: 0 18px 44px rgba(37,211,102,.32);
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      transition: .25s;
+      right: 20px;
+      bottom: 20px;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      font-size: 30px;
+      box-shadow: 0 16px 32px rgba(37, 211, 102, .35);
+      z-index: 20;
     }
 
-    .whatsapp:hover { transform: translateY(-4px) scale(1.02); }
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid,
+      .highlight {
+        grid-template-columns: 1fr;
+      }
 
-    @media (max-width: 980px) {
-      .hero-grid, .highlight { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .services-grid, .contact-grid { grid-template-columns: 1fr; }
-      .hero-card { min-height: 470px; }
-      .menu { display: none; }
+      .services { grid-template-columns: 1fr 1fr; }
+      .products { grid-template-columns: 1fr 1fr; }
+      .highlight { text-align: center; }
+      .highlight .btn { width: fit-content; margin: 0 auto; }
     }
 
     @media (max-width: 620px) {
-      .container { width: min(100% - 24px, 1180px); }
+      .nav { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      .menu { justify-content: flex-start; }
+      .menu a { padding: 8px 10px; font-size: 14px; }
       .hero { padding-top: 44px; }
-      h1 { letter-spacing: -2.3px; }
-      .hero p { font-size: 17px; }
-      .grid, .stats { grid-template-columns: 1fr; }
-      .hero-card { min-height: 430px; padding: 18px; }
-      .big-emoji { font-size: 108px; top: 50px; }
-      .mini-card { position: relative; width: auto !important; inset: auto !important; margin-top: 12px; }
-      .hero-card { display: flex; flex-direction: column; justify-content: flex-end; padding-top: 170px; }
-      .highlight { padding: 22px; border-radius: 28px; }
-      .highlight-emoji { min-height: 180px; font-size: 92px; }
-      .whatsapp { right: 14px; bottom: 14px; padding: 13px 15px; }
+      .emoji-showcase { grid-template-columns: 1fr; }
+      .services, .products { grid-template-columns: 1fr; }
+      .card, .product, .contact-box { padding: 22px; }
+      .highlight { padding: 28px; border-radius: 28px; }
+      h1 { letter-spacing: -1.4px; }
     }
   </style>
 </head>
@@ -444,141 +391,104 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#home">
-        <div class="logo">💖</div>
+        <div class="logo">V</div>
         <div>
           <span>Mini Papelaria Vivi</span>
-          <small>Papelaria • Impressões • Acessórios</small>
+          <small>Papelaria • Presentes • Impressões</small>
         </div>
       </a>
-
       <nav class="menu">
         <a href="#home">Home</a>
-        <a href="#produtos">Produtos</a>
         <a href="#servicos">Serviços</a>
+        <a href="#produtos">Produtos</a>
         <a href="#contato">Contato</a>
       </nav>
-
-      <a class="btn btn-primary" href="https://wa.me/5511982621469" target="_blank">💬 WhatsApp</a>
     </div>
   </header>
 
   <main id="home" class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="badge">✨ Tudo para escola, casa e rotina</div>
-        <h1>Pequena no nome, <span class="gradient-text">gigante no carinho.</span></h1>
+        <div class="badge">✨ Papelaria charmosa, prática e pertinho de você</div>
+        <h1>Coisas lindas para estudar, presentear e <strong>facilitar seu dia.</strong></h1>
         <p>
-          Na Mini Papelaria Vivi você encontra papelaria, cadernos, capinhas, acessórios para celular e serviços de impressão com atendimento rápido, caprichado e feito com amor.
+          Na Mini Papelaria Vivi você encontra material escolar, acessórios para celular, capinhas,
+          serviços de impressão, xerox e impressão de fotos com atendimento carinhoso e rápido.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#produtos">🛍️ Ver produtos</a>
-          <a class="btn btn-light" href="#servicos">🖨️ Serviços de impressão</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat"><strong>📚</strong><span>Material escolar</span></div>
-          <div class="stat"><strong>📱</strong><span>Acessórios para celular</span></div>
-          <div class="stat"><strong>🖨️</strong><span>Impressões e xerox</span></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/5511982621469" target="_blank">💬 Chamar no WhatsApp</a>
+          <a class="btn btn-light" href="#produtos">🛍️ Ver produtos</a>
         </div>
       </div>
 
-      <div class="hero-card" aria-label="Vitrine ilustrativa da Mini Papelaria Vivi">
-        <div class="big-emoji">🛍️</div>
-        <div class="mini-card card-1">
-          <b>📒 Cadernos lindos</b>
-          <small>Opções para escola, estudos e anotações.</small>
-        </div>
-        <div class="mini-card card-2">
-          <b>📸 Fotos e impressões</b>
-          <small>Impressão P&B, colorida, fotos e xerox.</small>
-        </div>
-        <div class="mini-card card-3">
-          <b>💅 Beleza e utilidades</b>
-          <small>Produtos práticos para o dia a dia.</small>
+      <div class="hero-card">
+        <div class="emoji-showcase">
+          <div class="mini-card"><div class="emoji">📚</div><b>Material Escolar</b><small>Cadernos e utilidades</small></div>
+          <div class="mini-card"><div class="emoji">📱</div><b>Acessórios</b><small>Capinhas e celular</small></div>
+          <div class="mini-card"><div class="emoji">🖨️</div><b>Impressões</b><small>Xerox e documentos</small></div>
+          <div class="mini-card"><div class="emoji">🖼️</div><b>Fotos</b><small>Recordações impressas</small></div>
         </div>
       </div>
     </div>
   </main>
 
-  <section id="produtos">
+  <section id="servicos">
     <div class="container">
       <div class="section-title">
-        <h2>Vitrine da Vivi 💕</h2>
-        <p>Uma seleção charmosa de produtos para escola, trabalho, celular e rotina. Por enquanto com emojis — depois é só trocar por fotos reais.</p>
+        <h2>Serviços feitos com capricho</h2>
+        <p>Uma papelaria pequena no tamanho, mas grande no cuidado com cada cliente.</p>
       </div>
 
-      <div class="grid">
-        <article class="product-card">
-          <div class="emoji-box">📚</div>
-          <span class="tag">Papelaria</span>
-          <h3>Cadernos e materiais</h3>
-          <p>Cadernos, folhas, canetas, lápis, borrachas e itens essenciais para os estudos.</p>
+      <div class="services">
+        <article class="card">
+          <div class="card-icon">🖨️</div>
+          <h3>Impressão e Xerox</h3>
+          <p>Impressões para escola, trabalho, documentos, atividades, boletos e muito mais.</p>
         </article>
 
-        <article class="product-card">
-          <div class="emoji-box">📱</div>
-          <span class="tag">Celular</span>
-          <h3>Acessórios</h3>
-          <p>Cabos, carregadores, fones e acessórios para deixar sua rotina mais prática.</p>
+        <article class="card">
+          <div class="card-icon">📸</div>
+          <h3>Impressão de Fotos</h3>
+          <p>Transforme momentos especiais em lembranças impressas com carinho.</p>
         </article>
 
-        <article class="product-card">
-          <div class="emoji-box">💖</div>
-          <span class="tag">Capinhas</span>
-          <h3>Capinhas estilosas</h3>
-          <p>Modelos bonitos, delicados e modernos para proteger seu celular com estilo.</p>
-        </article>
-
-        <article class="product-card">
-          <div class="emoji-box">💅</div>
-          <span class="tag">Beleza</span>
-          <h3>Itens de beleza</h3>
-          <p>Lixas, acetona, esmaltes, agulhas e pequenos produtos para cuidados do dia a dia.</p>
+        <article class="card">
+          <div class="card-icon">🎀</div>
+          <h3>Presentinhos e Mimos</h3>
+          <p>Itens fofos, úteis e delicados para presentear ou deixar sua rotina mais bonita.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="servicos" class="services">
+  <section id="produtos">
     <div class="container">
       <div class="section-title">
-        <h2>Serviços com capricho ✨</h2>
-        <p>Precisa imprimir, tirar xerox ou revelar uma foto? A Vivi te ajuda com carinho e praticidade.</p>
+        <h2>Vitrine da Vivi</h2>
+        <p>Produtos selecionados para escola, casa, celular e rotina.</p>
       </div>
 
-      <div class="services-grid">
-        <article class="service-card">
-          <div class="service-icon">🖨️</div>
-          <h3>Impressão P&B e colorida</h3>
-          <p>Impressões para documentos, trabalhos escolares, currículos e arquivos do dia a dia.</p>
-        </article>
-
-        <article class="service-card">
-          <div class="service-icon">📄</div>
-          <h3>Xerox</h3>
-          <p>Cópias rápidas para documentos, atividades escolares, comprovantes e materiais diversos.</p>
-        </article>
-
-        <article class="service-card">
-          <div class="service-icon">📸</div>
-          <h3>Impressão de fotos</h3>
-          <p>Imprima suas fotos favoritas e eternize momentos especiais com muito carinho.</p>
-        </article>
+      <div class="products">
+        <article class="product"><div class="emoji-box">📒</div><h3>Cadernos</h3><p>Modelos lindos para estudar.</p></article>
+        <article class="product"><div class="emoji-box">✏️</div><h3>Papelaria</h3><p>Canetas, lápis e materiais.</p></article>
+        <article class="product"><div class="emoji-box">📱</div><h3>Capinhas</h3><p>Proteção com estilo.</p></article>
+        <article class="product"><div class="emoji-box">🔌</div><h3>Acessórios</h3><p>Itens úteis para celular.</p></article>
+        <article class="product"><div class="emoji-box">💅</div><h3>Beleza</h3><p>Lixas, esmaltes e cuidados.</p></article>
+        <article class="product"><div class="emoji-box">🎁</div><h3>Mimos</h3><p>Produtos fofos e criativos.</p></article>
+        <article class="product"><div class="emoji-box">🧾</div><h3>Xerox</h3><p>Cópias rápidas e práticas.</p></article>
+        <article class="product"><div class="emoji-box">🖼️</div><h3>Fotos</h3><p>Impressão de lembranças.</p></article>
       </div>
+    </div>
+  </section>
 
+  <section>
+    <div class="container">
       <div class="highlight">
-        <div class="highlight-emoji">🌸</div>
         <div>
-          <h2>Atendimento delicado, rápido e pertinho de você.</h2>
-          <p>
-            A Mini Papelaria Vivi nasceu para facilitar sua rotina com produtos úteis, serviços de impressão e aquele atendimento de bairro que faz diferença.
-          </p>
-          <div class="pill-row">
-            <span class="pill">💗 Feito com carinho</span>
-            <span class="pill">⚡ Atendimento rápido</span>
-            <span class="pill">📍 Loja local</span>
-          </div>
+          <h2>Precisou imprimir, copiar ou comprar rapidinho?</h2>
+          <p>Chame a Mini Papelaria Vivi no WhatsApp e veja disponibilidade, valores e horários.</p>
         </div>
+        <a class="btn btn-light" href="https://wa.me/5511982621469" target="_blank">💬 Falar agora</a>
       </div>
     </div>
   </section>
@@ -586,38 +496,32 @@
   <section id="contato">
     <div class="container">
       <div class="section-title">
-        <h2>Fale com a Mini Papelaria Vivi 💬</h2>
-        <p>Entre em contato, tire dúvidas sobre produtos, envie arquivos para impressão ou peça informações pelo WhatsApp.</p>
+        <h2>Fale com a Vivi</h2>
+        <p>Atendimento simples, rápido e com carinho.</p>
       </div>
 
       <div class="contact-grid">
-        <article class="contact-card">
-          <div class="service-icon">📞</div>
-          <h3>WhatsApp</h3>
-          <p><strong>11 98262-1469</strong><br>Envie sua mensagem para orçamento, impressão ou dúvidas.</p>
-        </article>
+        <div class="contact-box">
+          <div class="info-row"><span>📍</span><div><b>Endereço</b><small>Rua Acedio José Fontanete, 53</small></div></div>
+          <div class="info-row"><span>📞</span><div><b>Telefone / WhatsApp</b><small>11 98262-1469</small></div></div>
+          <div class="info-row"><span>📷</span><div><b>Instagram</b><small>@minipapelariavivi</small></div></div>
+        </div>
 
-        <article class="contact-card">
-          <div class="service-icon">📍</div>
-          <h3>Endereço</h3>
-          <p>Rua Acedio José Fontanete, 53<br>Venha conhecer nossa loja.</p>
-        </article>
-
-        <article class="contact-card">
-          <div class="service-icon">📷</div>
-          <h3>Instagram</h3>
-          <p><strong>@minipapelariavivi</strong><br>Acompanhe novidades, produtos e promoções.</p>
-        </article>
+        <div class="contact-box">
+          <div class="info-row"><span>🕙</span><div><b>Horário de Funcionamento</b><small>Das 10h às 20h</small></div></div>
+          <div class="info-row"><span>💖</span><div><b>Atendimento</b><small>Produtos, impressões, fotos, xerox e acessórios.</small></div></div>
+          <div class="info-row"><span>✨</span><div><b>Mini no nome, grande no carinho</b><small>Uma loja feita para facilitar o seu dia.</small></div></div>
+        </div>
       </div>
     </div>
   </section>
 
+  <a class="whatsapp" href="https://wa.me/5511982621469" target="_blank" title="Chamar no WhatsApp">💬</a>
+
   <footer>
     <div class="container">
-      © 2026 Mini Papelaria Vivi — Papelaria, Impressões e Acessórios com carinho 💕
+      <p>© 2026 Mini Papelaria Vivi • Feito com carinho 💕</p>
     </div>
   </footer>
-
-  <a class="whatsapp" href="https://wa.me/5511982621469" target="_blank" aria-label="Abrir WhatsApp da Mini Papelaria Vivi">💬 Fale conosco</a>
 </body>
 </html>
